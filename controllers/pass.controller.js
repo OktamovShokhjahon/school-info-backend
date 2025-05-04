@@ -1,5 +1,5 @@
 // models
-const PassingScore = require("../models/PassingScore");
+const PassingScore = require("../models/Pass");
 
 // get all passing scores
 async function getAllPassingScores(req, res) {
@@ -106,9 +106,6 @@ async function updatePassingScore(req, res) {
 }
 
 module.exports = {
-  getAllLocations,
-  createLocation,
-  updateLocation,
   getAllPassingScores,
   createPassingScore,
   updatePassingScore,
