@@ -8,6 +8,7 @@ require("dotenv").config();
 // routes
 const aboutRoute = require("./routes/about.route");
 const achievementRoute = require("./routes/achievements.route");
+const locationRoute = require("./routes/location.route");
 
 // app
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.static("public"));
 // routers
 app.use("/api/about", aboutRoute);
 app.use("/api/achievement", achievementRoute);
+app.use("/api/location", locationRoute);
 
 // init
 function start() {
