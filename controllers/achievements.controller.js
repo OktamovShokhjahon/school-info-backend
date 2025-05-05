@@ -40,7 +40,6 @@ async function createAchievement(req, res) {
 
     image.mv(uploadPath, (err) => {
       if (err) return res.status(500).send(err);
-      res.send("Fayl muvaffaqiyatli yuklandi!");
     });
 
     const newAchievement = new Achievements({
