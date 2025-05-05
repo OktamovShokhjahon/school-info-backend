@@ -1,43 +1,9 @@
 // packages
 const path = require("path");
 const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
 
 // models
-const SocialMedia = require("../models/SocialMedia.js");
-
-// delete achievement
-async function deleteAchievement(req, res) {
-  try {
-    const { id } = req.query;
-
-    if (!id) {
-      return res.status(400).json({ message: "ID berilmadi" });
-    }
-
-    const achievement = await Achievements.findById(id);
-
-    if (!achievement) {
-      return res.status(404).json({ message: "Yutuq topilmadi" });
-    }
-
-    const imagePath = path.join(__dirname, "../uploads", achievement.image);
-
-    if (fs.existsSync(imagePath)) {
-      fs.unlinkSync(imagePath);
-    }
-
-    await Achievements.findByIdAndDelete(id)
-      .then(() => {
-        return res.status(200).json({ message: "Yutuq o'chirildi" });
-      })
-      .catch((error) => {
-        return res.status(500).json({ error: error.message });
-      });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-}
+const SocialMedia = require("../models/Social.js");
 
 // get all social media
 async function getAllSocialMedia(req, res) {
@@ -142,12 +108,6 @@ async function deleteSocialMedia(req, res) {
       return res.status(404).json({ message: "Ijtimoiy tarmoq topilmadi" });
     }
 
-    const iconPath = path.join(__dirname, "../uploads", socialMedia.icon);
-
-    if (fs.existsSync(iconPath)) {
-      fs.unlinkSync(iconPath);
-    }
-
     await SocialMedia.findByIdAndDelete(id)
       .then(() => {
         return res.status(200).json({ message: "Ijtimoiy tarmoq o'chirildi" });
@@ -161,7 +121,8 @@ async function deleteSocialMedia(req, res) {
 }
 
 module.exports = {
-  getAllAchievements,
-  deleteAchievement,
+  getAllSocialMedia,
+  updateSocialMedia,
   createSocialMedia,
+  deleteSocialMedia,
 };

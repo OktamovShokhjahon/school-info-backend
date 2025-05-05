@@ -29,9 +29,9 @@ async function createPassingScore(req, res) {
       });
     }
 
-    const { score } = req.body;
+    const { title, body } = req.body;
 
-    if (!score) {
+    if (!title || !body) {
       return res.status(400).json({
         message: "Iltimos, o'tish ballari maydonini to'ldiring",
       });
@@ -47,7 +47,8 @@ async function createPassingScore(req, res) {
     }
 
     const newPassingScore = new PassingScore({
-      score,
+      title,
+      body,
     });
 
     await newPassingScore

@@ -10,6 +10,7 @@ const aboutRoute = require("./routes/about.route");
 const achievementRoute = require("./routes/achievements.route");
 const locationRoute = require("./routes/location.route");
 const passRoute = require("./routes/pass.route");
+const socialRoute = require("./routes/social.route");
 
 // app
 const app = express();
@@ -23,6 +24,7 @@ app.use("/api/about", aboutRoute);
 app.use("/api/achievement", achievementRoute);
 app.use("/api/location", locationRoute);
 app.use("/api/pass", passRoute);
+app.use("/api/social", socialRoute);
 
 // init
 function start() {
